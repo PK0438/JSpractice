@@ -1,54 +1,24 @@
-let randomNum;
+
 let compMove = "";
 let won = 0;
 let lost = 0;
 let tie = 0;
 
 rock = () => {
-  console.log("You: Rock");
    randomMove();
-  if( compMove == "Rock" ) {
-    console.log("It's a tie!");
-    tie += 1;
-  } else if ( compMove == "Paper" ) {
-    console.log("You lost!");
-    lost += 1;
-  } else if ( compMove == "Scissors" ) {
-    console.log("You won!");
-    won += 1;
-  }
+   playGame("Rock");
   count(won, lost, tie);
 }
 
 paper = () => {
-  console.log("You: Paper");
   randomMove();
-  if( compMove == "Rock" ) {
-    console.log("You won!");
-    won += 1;
-  } else if ( compMove == "Paper" ) {
-    console.log("It's a tie!");
-    tie += 1;
-  } else if ( compMove == "Scissors" ) {
-    console.log("You lost!");
-    lost += 1;
-  }
+  playGame("Paper");
   count(won, lost, tie);
 }
 
 scissors = () => {
-  console.log("You: Scissors")
   randomMove();
-  if( compMove == "Rock" ) {
-    console.log("You lost!");
-    lost += 1;
-  } else if ( compMove == "Paper" ) {
-    console.log("You won!");
-    won += 1;
-  } else if ( compMove == "Scissors" ) {
-    console.log("It's a tie!");
-    tie += 1;
-  }
+  playGame("Scissors");
   count(won, lost, tie);
 }
 
@@ -59,7 +29,49 @@ reset = () => {
   count();
 }
 
+playGame = (playerMove) => {
+  let result = "";
+  if(playerMove === "Scissors") {
+    if( compMove === "Rock" ) {
+      result = "You lost!";
+      lost += 1;
+    } else if ( compMove === "Paper" ) {
+       result = "You won!";
+      won += 1;
+    } else if ( compMove === "Scissors" ) {
+       result = "a tie!";
+      tie += 1;
+    }
+  } else if(playerMove === "Paper") {
+    if( compMove === "Rock" ) {
+      result = "You won!";
+      won += 1;
+    } else if ( compMove === "Paper" ) {
+      result = "a tie!";
+      tie += 1;
+    } else if ( compMove === "Scissors" ) {
+      result = "You lost!";
+      lost += 1;
+    }
+  } else if(playerMove === "Rock") {
+    if( compMove === "Rock" ) {
+      result = "a tie!";
+      tie += 1;
+    } else if ( compMove === "Paper" ) {
+      result = "You lost!";
+      lost += 1;
+    } else if ( compMove === "Scissors" ) {
+      result = "You won!";
+      won += 1;
+    }
+  }
+
+  alert(`You picked ${playerMove}, Computer picked ${compMove} and the result is ${result}`)
+
+}
+
 randomMove = () => {
+  let randomNum;
   randomNum = Math.random();
   if (  randomNum >= 0 && randomNum < 1/3 ) {
     compMove = "Rock";
