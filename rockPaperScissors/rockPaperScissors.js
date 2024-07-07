@@ -5,19 +5,16 @@ let lost = 0;
 let tie = 0;
 
 rock = () => {
-   randomMove();
    playGame("Rock");
   count(won, lost, tie);
 }
 
 paper = () => {
-  randomMove();
   playGame("Paper");
   count(won, lost, tie);
 }
 
 scissors = () => {
-  randomMove();
   playGame("Scissors");
   count(won, lost, tie);
 }
@@ -31,6 +28,7 @@ reset = () => {
 
 playGame = (playerMove) => {
   let result = "";
+  randomMove();
   if(playerMove === "Scissors") {
     if( compMove === "Rock" ) {
       result = "You lost!";
@@ -42,6 +40,7 @@ playGame = (playerMove) => {
        result = "a tie!";
       tie += 1;
     }
+
   } else if(playerMove === "Paper") {
     if( compMove === "Rock" ) {
       result = "You won!";
@@ -53,6 +52,7 @@ playGame = (playerMove) => {
       result = "You lost!";
       lost += 1;
     }
+    
   } else if(playerMove === "Rock") {
     if( compMove === "Rock" ) {
       result = "a tie!";
