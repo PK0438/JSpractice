@@ -21,3 +21,9 @@ calculateTax = (cartAmt, taxPercent) => {
 calculateTax(2001, 0.25);
 
 calculateTax(1500, 0.15);
+
+greet = (name) => {
+ name ? console.log(`Hello ${name}!`) : console.log(`Hi there!`)
+}
+
+greet()
